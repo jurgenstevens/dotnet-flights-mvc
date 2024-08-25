@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dotnet-flights-mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60e837ff85d1e88a744cfc5a06c026ccf4eacb5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+307814fd98c5ed0b30e3c0a4bba4f4aacdbb5d1c")]
 [assembly: System.Reflection.AssemblyProductAttribute("dotnet-flights-mvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dotnet-flights-mvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
