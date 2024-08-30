@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MvcFlight.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MvcFlightContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
