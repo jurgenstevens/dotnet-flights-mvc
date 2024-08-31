@@ -26,7 +26,7 @@ public static class SeedData
                     Id = 1,
                     Airline = "United Airlines",
                     Departs = DateTime.Parse("2024-09-10 10:00:00"),
-                    Airport = "LAX",
+                    Airport = "ORD",
                     FlightNo = 101
                 },
                 new Flight
@@ -34,7 +34,7 @@ public static class SeedData
                     Id = 2,
                     Airline = "American Airlines",
                     Departs = DateTime.Parse("2024-09-11 12:30:00"),
-                    Airport = "DFW",
+                    Airport = "LAX",
                     FlightNo = 202
                 },
                 new Flight
@@ -42,7 +42,7 @@ public static class SeedData
                     Id = 3,
                     Airline = "Delta Airlines",
                     Departs = DateTime.Parse("2024-09-12 14:45:00"),
-                    Airport = "ATL",
+                    Airport = "MDW",
                     FlightNo = 303
                 },
                 new Flight

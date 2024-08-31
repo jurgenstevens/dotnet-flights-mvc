@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcFlight.Data;
+using MvcFlight.Models;
+using MvcMFlight.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcFlightContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
@@ -9,6 +12,12 @@ builder.Services.AddDbContext<MvcFlightContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
