@@ -34,7 +34,7 @@ namespace dotnet_flights_mvc.Controllers
             }
 
             var flight = await _context.Flight
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(flight => flight.Id == id);
             if (flight == null)
             {
                 return NotFound();
@@ -125,7 +125,7 @@ namespace dotnet_flights_mvc.Controllers
             }
 
             var flight = await _context.Flight
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(flight => flight.Id == id);
             if (flight == null)
             {
                 return NotFound();
