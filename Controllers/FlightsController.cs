@@ -20,22 +20,10 @@ namespace dotnet_flights_mvc.Controllers
         }
 
         // GET: Flights
-        public async Task<IActionResult> Index(string searchString)
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
         {
-            if (_context.Flight == null)
-            {
-                return Problem("Entity set 'MvcFlightContext.Flight'  is null.");
-            }
-
-            var flights = from m in _context.Flight
-                        select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                flights = flights.Where(s => s.Airline!.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-            return View(await flights.ToListAsync());
+            return "From [HttpPost]Index: filter on " + searchString;
         }
 
         // GET: Flights/Details/5
