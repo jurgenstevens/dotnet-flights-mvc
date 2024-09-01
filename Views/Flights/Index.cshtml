@@ -10,7 +10,7 @@
     <a asp-action="Create">Create A New Flight</a>
 </p>
 
-<form asp-controller="Flights" asp-action="Index">
+<form asp-controller="Flights" asp-action="Index" method="get">
     @* Eventually change this to search by customer name *@
     <p>
         Airline: <input type="text" name="SearchString" />
