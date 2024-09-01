@@ -20,7 +20,7 @@ namespace dotnet_flights_mvc.Controllers
         }
 
         // GET: Flights
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Index(string searchString)
         {
             if (_context.Flight == null)
             {
@@ -30,9 +30,9 @@ namespace dotnet_flights_mvc.Controllers
             var flights = from m in _context.Flight
                         select m;
 
-            if (!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                flights = flights.Where(s => s.Airline!.ToUpper().Contains(id.ToUpper()));
+                flights = flights.Where(s => s.Airline!.ToUpper().Contains(searchString.ToUpper()));
             }
 
             return View(await flights.ToListAsync());

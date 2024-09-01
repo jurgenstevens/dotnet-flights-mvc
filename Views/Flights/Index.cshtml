@@ -9,6 +9,10 @@
 <p>
     <a asp-action="Create">Create A New Flight</a>
 </p>
+
+<form asp-controller="Flights" asp-action="Index">
+    <p>Airline: <input type="text" name =SearchString /></p>
+</form>
 <table class="table text-white">
     <thead>
         <tr>
