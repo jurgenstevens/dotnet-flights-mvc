@@ -11,7 +11,11 @@
 </p>
 
 <form asp-controller="Flights" asp-action="Index">
-    <p>Airline: <input type="text" name =SearchString /></p>
+    @* Eventually change this to search by customer name *@
+    <p>
+        Airline: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
 </form>
 <table class="table text-white">
     <thead>
