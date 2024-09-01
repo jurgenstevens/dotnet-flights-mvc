@@ -20,9 +20,22 @@ namespace dotnet_flights_mvc.Controllers
         }
 
         // GET: Flights
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-            return View(await _context.Flight.ToListAsync());
+            if (_context.Flight == null)
+            {
+                return Problem("Entity set 'MvcFlightContext.Flight'  is null.");
+            }
+
+            var flights = from m in _context.Flight
+                        select m;
+
+            if (!String.IsNullOrEmpty(id))
+            {
+                flights = flights.Where(s => s.Airline!.ToUpper().Contains(id.ToUpper()));
+            }
+
+            return View(await flights.ToListAsync());
         }
 
         // GET: Flights/Details/5
