@@ -20,7 +20,6 @@ namespace dotnet_flights_mvc.Controllers
         }
 
         // GET: Flights
-        [HttpPost]
         // to search by passenger in the future pass a flightPassenger string
         public async  Task<IActionResult> Index(string flightAirport, string searchString)
         {
