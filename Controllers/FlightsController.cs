@@ -82,7 +82,7 @@ namespace dotnet_flights_mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Airline,Departs,Airport,FlightNo")] Flight flight)
+        public async Task<IActionResult> Create([Bind("Id,Airline,Departs,Airport,FlightNo,Ticket")] Flight flight)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace dotnet_flights_mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Airline,Departs,Airport,FlightNo")] Flight flight)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Airline,Departs,Airport,FlightNo,Ticket")] Flight flight)
         {
             if (id != flight.Id)
             {

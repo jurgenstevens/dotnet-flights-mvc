@@ -35,28 +35,45 @@
             <th>
                 @Html.DisplayNameFor(model => model.Flights![0].FlightNo)
             </th>
+            <th>Tickets</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Flights!) {
+@foreach (var flight in Model.Flights!) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Airline)
+                @Html.DisplayFor(model => flight.Airline)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Departs)
+                @Html.DisplayFor(model => flight.Departs)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Airport)
+                @Html.DisplayFor(model => flight.Airport)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FlightNo)
+                @Html.DisplayFor(model => flight.FlightNo)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @if (flight.Tickets != null && flight.Tickets.Any())
+                {
+                    <ul>
+                        @foreach (var ticket in flight.Tickets)
+                        {
+                            <li>@Html.DisplayFor(model => ticket.Seat)</li>
+                            <li>@Html.DisplayFor(model => ticket.Price)</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>No Tickets</p>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@flight.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@flight.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@flight.Id">Delete</a>
             </td>
         </tr>
 }
