@@ -11,7 +11,7 @@ using MvcFlight.Data;
 namespace dotnet_flights_mvc.Migrations
 {
     [DbContext(typeof(MvcFlightContext))]
-    [Migration("20240830194751_InitialCreate")]
+    [Migration("20240902224950_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -41,6 +41,45 @@ namespace dotnet_flights_mvc.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Flight");
+                });
+
+            modelBuilder.Entity("MvcFlight.Models.Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FlightId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Seat")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("Ticket");
+                });
+
+            modelBuilder.Entity("MvcFlight.Models.Ticket", b =>
+                {
+                    b.HasOne("MvcFlight.Models.Flight", "Flight")
+                        .WithMany("Tickets")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
+                });
+
+            modelBuilder.Entity("MvcFlight.Models.Flight", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }
