@@ -39,7 +39,7 @@ namespace dotnet_flights_mvc.Controllers
                 flights = flights.Where(s => s.Airline!.ToUpper().Contains(searchString.ToUpper()));
             }
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(flightAirport))
             {
                 flights = flights.Where(x => x.Airport == flightAirport);
             }
