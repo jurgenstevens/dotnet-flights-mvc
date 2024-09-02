@@ -1,18 +1,21 @@
-@model IEnumerable<MvcFlight.Models.Flight>
+@model MvcFlight.Models.FlightAirportViewModel
 
 @{
     ViewData["Title"] = "All Flights";
 }
 
-<h1>Index</h1>
+<h1>All Flights</h1>
 
 <p>
     <a asp-action="Create">Create A New Flight</a>
 </p>
 
 <form asp-controller="Flights" asp-action="Index" method="get">
-    @* Eventually change this to search by customer name *@
+    @* Eventually change this to search by passenger name *@
     <p>
+        <select asp-for="FlightAirport" asp-items="Model.Airports">
+            <option value="">All</option>
+        </select>
         Airline: <input type="text" name="SearchString" />
         <input type="submit" value="Filter" />
     </p>
@@ -21,22 +24,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Airline)
+                @Html.DisplayNameFor(model => model.Flights![0].Airline)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Departs)
+                @Html.DisplayNameFor(model => model.Flights![0].Departs)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Airport)
+                @Html.DisplayNameFor(model => model.Flights![0].Airport)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FlightNo)
+                @Html.DisplayNameFor(model => model.Flights![0].FlightNo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Flights!) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Airline)
