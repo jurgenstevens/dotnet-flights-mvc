@@ -21,9 +21,37 @@ namespace dotnet_flights_mvc.Controllers
 
         // GET: Flights
         [HttpPost]
-        public string Index(string searchString, bool notUsed)
+        // to search by passenger in the future pass a flightPassenger string
+        public async  Task<IActionResult> Index(string flightAirport, string searchString)
         {
-            return "From [HttpPost]Index: filter on " + searchString;
+            if(_context.Flight == null)
+            {
+                return Problem("Entity set'MvcFlight.Context.Flight' is null.");
+            }
+            // Use LINQ to get list of airports
+            IQueryable<string> airportQuery = from m in _context.Flight
+                                                orderby m.Airport
+                                                select m.Airport;
+            var flights = from m in _context.Flight
+                            select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                flights = flights.Where(s => s.Airline!.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                flights = flights.Where(x => x.Airport == flightAirport);
+            }
+
+            var flightAirportVM = new FlightAirportViewModel
+            {
+                Airports = new SelectList(await airportQuery.Distinct().ToListAsync()),
+                Flights = await flights.ToListAsync()
+            };
+
+            return View(flightAirportVM);
         }
 
         // GET: Flights/Details/5
