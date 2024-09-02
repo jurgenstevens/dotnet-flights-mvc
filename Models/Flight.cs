@@ -11,4 +11,5 @@ public class Flight
     public DateTime Departs { get; set; }
     public string? Airport { get; set; }
     public int FlightNo { get; set; }
+    public string? Ticket { get; set; }
 }
