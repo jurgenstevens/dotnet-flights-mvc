@@ -4,6 +4,7 @@ namespace MvcFlight.Models;
 
 public class Flight
 {
+    // ADD PASSENGER PROPERTY FOR EACH FLIGHT
     public int Id { get; set; }
     public string? Airline { get; set; }
     [DataType(DataType.Date)]
