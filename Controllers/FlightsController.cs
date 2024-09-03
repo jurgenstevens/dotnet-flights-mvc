@@ -63,7 +63,9 @@ namespace dotnet_flights_mvc.Controllers
             }
 
             var flight = await _context.Flight
+                .Include(f => f.Tickets)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (flight == null)
             {
                 return NotFound();
