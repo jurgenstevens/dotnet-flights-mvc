@@ -32,6 +32,7 @@ namespace dotnet_flights_mvc.Controllers
                                                 orderby m.Airport
                                                 select m.Airport;
             var flights = from m in _context.Flight
+                            .Include(f => f.Tickets)
                             select m;
 
             if (!string.IsNullOrEmpty(searchString))

@@ -28,11 +28,11 @@ public static class SeedData
                     Departs = DateTime.Parse("2024-09-10 10:00:00"),
                     Airport = "ORD",
                     FlightNo = 101,
-                    Tickets = 
-                    [
+                    Tickets = new List<Ticket>
+                    {
                         new Ticket { Seat = "A1", Price = 600.00M },
                         new Ticket { Seat = "F10", Price = 100.00M }
-                    ]
+                    }
                 },
                 new Flight
                 {
@@ -41,11 +41,11 @@ public static class SeedData
                     Departs = DateTime.Parse("2024-09-11 12:30:00"),
                     Airport = "LAX",
                     FlightNo = 202,
-                    Tickets = 
-                    [
+                    Tickets = new List<Ticket>
+                    {
                         new Ticket { Seat = "B1", Price = 500.00M },
                         new Ticket { Seat = "F15", Price = 100.00M }
-                    ]
+                    }
                 },
                 new Flight
                 {
@@ -54,11 +54,11 @@ public static class SeedData
                     Departs = DateTime.Parse("2024-09-12 14:45:00"),
                     Airport = "MDW",
                     FlightNo = 303,
-                    Tickets = 
-                    [
+                    Tickets = new List<Ticket>
+                    {
                         new Ticket { Seat = "A1", Price = 600.00M },
                         new Ticket { Seat = "F10", Price = 100.00M }
-                    ]
+                    }
                 },
                 new Flight
                 {
@@ -67,11 +67,11 @@ public static class SeedData
                     Departs = DateTime.Parse("2024-09-13 16:15:00"),
                     Airport = "DEN",
                     FlightNo = 404,
-                    Tickets = 
-                    [
+                    Tickets = new List<Ticket>
+                    {
                         new Ticket { Seat = "A1", Price = 600.00M },
                         new Ticket { Seat = "F10", Price = 100.00M }
-                    ]
+                    }
                 }
             );
             context.SaveChanges();

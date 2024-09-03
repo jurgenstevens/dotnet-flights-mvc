@@ -11,7 +11,7 @@ using MvcFlight.Data;
 namespace dotnet_flights_mvc.Migrations
 {
     [DbContext(typeof(MvcFlightContext))]
-    [Migration("20240902224950_InitialCreate")]
+    [Migration("20240903192629_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

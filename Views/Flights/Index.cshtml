@@ -58,11 +58,8 @@
                 @if (flight.Tickets != null && flight.Tickets.Any())
                 {
                     <ul>
-                        @foreach (var ticket in flight.Tickets)
-                        {
-                            <li>@Html.DisplayFor(model => ticket.Seat)</li>
-                            <li>@Html.DisplayFor(model => ticket.Price)</li>
-                        }
+                        <li>@flight.Tickets.Count() Ticket(s))</li>
+                
                     </ul>
                 }
                 else
