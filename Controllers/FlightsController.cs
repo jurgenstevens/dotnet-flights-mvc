@@ -184,5 +184,47 @@ namespace dotnet_flights_mvc.Controllers
         {
             return _context.Flight.Any(e => e.Id == id);
         }
+
+
+        // GET: Flights/NewTicket/5
+        public async Task<IActionResult> NewTicket(int? id)
+        {
+            // get the flight
+            var flight = await _context.Flight
+                .Include(f => f.Tickets)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (flight == null)
+            {
+                return NotFound();
+            }
+
+            return View(flight);
+        }
+
+
+        // POST: Flights/CreateTicket/:id
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> CreateTicket(int flightId, [Bind("Id,Seat,Price")] Ticket ticket)
+        // {
+        //     var flight = await _context.Flight
+        //         .Include(f => f.Tickets)
+        //         .FirstOrDefaultAsync(m => m.Id == flightId);
+
+        //     if (flight == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+            
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Add(ticket);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(flight);
+        // }
     }
 }

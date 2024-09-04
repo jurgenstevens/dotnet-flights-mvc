@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-flights-mvc", "dotnet-flights-mvc.csproj", "{E41100B6-AB77-442B-BCF1-7D051BBE118F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-flights-mvc", "dotnet-flights-mvc.csproj", "{DFC13503-1DC1-4C8E-A4D0-B7947827A96B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E41100B6-AB77-442B-BCF1-7D051BBE118F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E41100B6-AB77-442B-BCF1-7D051BBE118F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E41100B6-AB77-442B-BCF1-7D051BBE118F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E41100B6-AB77-442B-BCF1-7D051BBE118F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC13503-1DC1-4C8E-A4D0-B7947827A96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC13503-1DC1-4C8E-A4D0-B7947827A96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC13503-1DC1-4C8E-A4D0-B7947827A96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC13503-1DC1-4C8E-A4D0-B7947827A96B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
