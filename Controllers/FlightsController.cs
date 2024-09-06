@@ -187,19 +187,29 @@ namespace dotnet_flights_mvc.Controllers
 
 
         // GET: Flights/NewTicket/5
-        public async Task<IActionResult> NewTicket(int? id)
+        public async Task<IActionResult> NewTicket(int? flightId)
         {
             // get the flight
             var flight = await _context.Flight
                 .Include(f => f.Tickets)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id == flightId);
 
             if (flight == null)
             {
                 return NotFound();
             }
 
-            return View(flight);
+            var newTicket = new Ticket
+            {
+                FlightId = flight.Id,
+                Seat = "",
+            };
+
+            ViewBag.flightId = flight.Id;
+            ViewBag.Airline = flight.Airline;
+            ViewBag.FlightNo = flight.FlightNo;
+            
+            return View(newTicket);
         }
 
 
@@ -208,6 +218,7 @@ namespace dotnet_flights_mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTicket(int flightId, [Bind("Id,Seat,Price")] Ticket ticket)
         {
+            
             var flight = await _context.Flight
                 .Include(f => f.Tickets)
                 .FirstOrDefaultAsync(m => m.Id == flightId);

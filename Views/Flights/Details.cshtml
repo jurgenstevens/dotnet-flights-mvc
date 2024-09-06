@@ -52,12 +52,12 @@
                 </div>
             }
         </dd>
+        <a asp-action="NewTicket" asp-route-id="@Model?.Id">Add Ticket</a>
     </dl>
 </div>
 @* Include a link here redirect to a new page to create a Ticket *@
 @* Referencing David Stovell's Add Child Records to Parent YT video: https://youtu.be/qP-KNZqAdqo?si=P7J4gP4tEBTdYVdI *@
 @* @Html.ActionLink("Add Ticket", "NewTicket", "Flights", new { id = Model.Id}, null) *@
-<a asp-action="NewTicket" asp-route-id="@Model?.Id">Add Ticket</a>
 <br/>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

@@ -4,23 +4,23 @@
     ViewData["Title"] = "Create Ticket";
 }
 
-<h1>Create</h1>
+<h1>Create A New Ticket</h1>
 
-<h4>Flight</h4>
+<h4>$"Flight {FlightNo}"</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreateTicket">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @* <label asp-for="Airline" class="control-label"></label>
-                <input asp-for="Airline" class="form-control" />
-                <span asp-validation-for="Airline" class="text-danger"></span> *@
+                <label asp-for="Seat" class="control-label"></label>
+                <input asp-for="Seat" class="form-control" />
+                <span asp-validation-for="Seat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @* <label asp-for="Departs" class="control-label"></label>
-                <input asp-for="Departs" class="form-control" />
-                <span asp-validation-for="Departs" class="text-danger"></span> *@
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
