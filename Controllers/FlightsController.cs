@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -186,31 +182,31 @@ namespace dotnet_flights_mvc.Controllers
         }
 
 
-        // GET: Flights/NewTicket/5
-        public async Task<IActionResult> NewTicket(int? flightId)
-        {
-            // get the flight
-            var flight = await _context.Flight
-                .Include(f => f.Tickets)
-                .FirstOrDefaultAsync(m => m.Id == flightId);
+        // // GET: Flights/NewTicket/5
+        // public async Task<IActionResult> NewTicket(int? flightId)
+        // {
+        //     // get the flight
+        //     var flight = await _context.Flight
+        //         .Include(f => f.Tickets)
+        //         .FirstOrDefaultAsync(m => m.Id == flightId);
 
-            if (flight == null)
-            {
-                return NotFound();
-            }
+        //     if (flight == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            var newTicket = new Ticket
-            {
-                FlightId = flight.Id,
-                Seat = "",
-            };
+        //     var newTicket = new Ticket
+        //     {
+        //         FlightId = flight.Id,
+        //         Seat = "",
+        //     };
 
-            ViewBag.flightId = flight.Id;
-            ViewBag.Airline = flight.Airline;
-            ViewBag.FlightNo = flight.FlightNo;
+        //     ViewBag.flightId = flight.Id;
+        //     ViewBag.Airline = flight.Airline;
+        //     ViewBag.FlightNo = flight.FlightNo;
             
-            return View(newTicket);
-        }
+        //     return View(newTicket);
+        // }
 
 
         // POST: Flights/CreateTicket/:id
