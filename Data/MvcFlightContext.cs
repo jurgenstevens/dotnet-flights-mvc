@@ -9,11 +9,14 @@ namespace MvcFlight.Data
 {
     public class MvcFlightContext : DbContext
     {
-        public MvcFlightContext (DbContextOptions<MvcFlightContext> options)
+        public MvcFlightContext(DbContextOptions<MvcFlightContext> options)
             : base(options)
         {
         }
 
-        public DbSet<MvcFlight.Models.Flight> Flight { get; set; } = default!;
+
+        public DbSet<Ticket> Tickets { get; set; } = default!;
+        public DbSet<Flight> Flights { get; set; } = default!;
+
     }
 }

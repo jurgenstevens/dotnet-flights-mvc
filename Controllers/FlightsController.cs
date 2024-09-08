@@ -19,15 +19,15 @@ namespace dotnet_flights_mvc.Controllers
         // to search by passenger in the future pass a flightPassenger string
         public async  Task<IActionResult> Index(string flightAirport, string searchString)
         {
-            if(_context.Flight == null)
+            if(_context.Flights == null)
             {
                 return Problem("Entity set'MvcFlight.Context.Flight' is null.");
             }
             // Use LINQ to get list of airports
-            IQueryable<string> airportQuery = from m in _context.Flight
+            IQueryable<string> airportQuery = from m in _context.Flights
                                                 orderby m.Airport
                                                 select m.Airport;
-            var flights = from m in _context.Flight
+            var flights = from m in _context.Flights
                             .Include(f => f.Tickets)
                             select m;
 
@@ -58,7 +58,7 @@ namespace dotnet_flights_mvc.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flight
+            var flight = await _context.Flights
                 .Include(f => f.Tickets)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
@@ -100,7 +100,7 @@ namespace dotnet_flights_mvc.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flight.FindAsync(id);
+            var flight = await _context.Flights.FindAsync(id);
             if (flight == null)
             {
                 return NotFound();
@@ -151,7 +151,7 @@ namespace dotnet_flights_mvc.Controllers
                 return NotFound();
             }
 
-            var flight = await _context.Flight
+            var flight = await _context.Flights
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (flight == null)
             {
@@ -166,10 +166,10 @@ namespace dotnet_flights_mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var flight = await _context.Flight.FindAsync(id);
+            var flight = await _context.Flights.FindAsync(id);
             if (flight != null)
             {
-                _context.Flight.Remove(flight);
+                _context.Flights.Remove(flight);
             }
 
             await _context.SaveChangesAsync();
@@ -178,7 +178,7 @@ namespace dotnet_flights_mvc.Controllers
 
         private bool FlightExists(int id)
         {
-            return _context.Flight.Any(e => e.Id == id);
+            return _context.Flights.Any(e => e.Id == id);
         }
 
 
@@ -215,7 +215,7 @@ namespace dotnet_flights_mvc.Controllers
         public async Task<IActionResult> CreateTicket(int flightId, [Bind("Id,Seat,Price")] Ticket ticket)
         {
             
-            var flight = await _context.Flight
+            var flight = await _context.Flights
                 .Include(f => f.Tickets)
                 .FirstOrDefaultAsync(m => m.Id == flightId);
 

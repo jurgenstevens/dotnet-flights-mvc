@@ -18,7 +18,7 @@ namespace dotnet_flights_mvc.Controllers
         // GET: Tickets/NewTicket/5
         public async  Task<IActionResult> NewTicket(int flightId)
         {
-          var flight = await _context.Flight
+          var flight = await _context.Flights
                 .Include(f => f.Tickets)
                 .FirstOrDefaultAsync(m => m.Id == flightId);
 
@@ -40,5 +40,21 @@ namespace dotnet_flights_mvc.Controllers
           return View(newTicket);
         }
 
+        // POST: Tickets/CreateTicket/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateTicket(Ticket ticket)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Tickets.Add(ticket);
+                _context.SaveChanges();
+
+                
+                return RedirectToAction("Details", "Flights", new { id = ticket.FlightId });
+            }
+
+            return View("NewTicket", ticket);
+        }
     }
 }

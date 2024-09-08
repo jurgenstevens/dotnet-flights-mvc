@@ -16,11 +16,11 @@ public static class SeedData
                 DbContextOptions<MvcFlightContext>>()))
         {
             // Look for any movies.
-            if (context.Flight.Any())
+            if (context.Flights.Any())
             {
                 return;   // DB has been seeded
             }
-            context.Flight.AddRange(
+            context.Flights.AddRange(
                 new Flight
                 {
                     Id = 1,
