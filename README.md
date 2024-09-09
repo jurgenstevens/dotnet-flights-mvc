@@ -3,7 +3,7 @@
 ## ✈️ About
 Are you an airport customer service manager or part of an operations team? Do you handle day-to-day tasks like flight management, assisting travelers, or troubleshooting issues with flight ticket reservations? This Airport Customer Service app is designed to streamline those tasks!
 
-With AirportService.NET, you can easily manage flights, assign tickets, and offer efficient service to passengers. As development progresses, employees will gain access to more tools that help streamline their work and improve customer experience.
+With FlightsManagerDOTNet, you can easily manage flights, assign tickets, and offer efficient service to passengers. As development progresses, employees will gain access to more tools that help streamline their work and improve customer experience.
 
 ## 🚀 Technologies Used
 - **C#**: Backend logic and data management
