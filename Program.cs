@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.Extensions.Logging;
 using MvcFlight.Data;
 using MvcFlight.Models;
 using MvcMFlight.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
