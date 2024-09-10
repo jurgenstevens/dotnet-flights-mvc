@@ -14,28 +14,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the code from the repository
       - uses: actions/checkout@v4
 
+      # Set up .NET Core SDK
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
+      # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore dotnet-flights-mvc.csproj
+        run: dotnet restore dotnet-flights-mvc.sln  # Use the solution file
 
+      # Build the project
       - name: Build with dotnet
-        run: dotnet build dotnet-flights-mvc.csproj --configuration Release
+        run: dotnet build dotnet-flights-mvc.sln --configuration Release  # Build the solution
 
+      # Publish the project
       - name: dotnet publish
-        run: dotnet publish dotnet-flights-mvc.csproj --configuration Release --output ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish dotnet-flights-mvc.sln --configuration Release --output ${{env.DOTNET_ROOT}}/myapp  # Publish the solution
 
+      # Upload the artifact for the deployment job
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-          
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
