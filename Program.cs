@@ -3,8 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using MvcFlight.Data;
 using MvcFlight.Models;
 using MvcMFlight.Models;
+using DotNetCoreSqlDb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<MvcFlightContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 
@@ -16,7 +18,7 @@ if(builder.Environment.IsDevelopment())
 }
 else
 {
-    builder.Services.AddDbContext<MyDatabaseContext>(options =>
+    builder.Services.AddDbContext<MvcFlightContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
     builder.Services.AddStackExchangeRedisCache(options =>
     {
