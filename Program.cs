@@ -9,9 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add database context and cache
 if(builder.Environment.IsDevelopment())
+{
     builder.Services.AddDbContext<MvcFlightContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
-{
 }
 else
 {
