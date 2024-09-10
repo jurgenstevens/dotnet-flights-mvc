@@ -33,7 +33,13 @@ jobs:
 
       # Publish the project
       - name: dotnet publish
-        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release --output ${{env.DOTNET_ROOT}}/myapp  
+        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release --output ${{env.DOTNET_ROOT}}/myapp
+        
+      - name: Install dotnet ef
+        run: dotnet tool install -g dotnet-ef --version 8.*
+
+      - name: Create migrations bundle
+        run: dotnet ef migrations bundle --runtime linux-x64 -o ${{env.DOTNET_ROOT}}/myapp/migrationsbundle
 
       # Upload the artifact for the deployment job
       - name: Upload artifact for deployment job
