@@ -277,3 +277,10 @@
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/obj/Debug/net8.0/dotnet-flights-mvc.csproj.AssemblyReference.cache
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/obj/Debug/net8.0/dotnet-f.ABC6C347.Up2Date
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.Logging.AzureAppServices.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Pipelines.Sockets.Unofficial.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/StackExchange.Redis.dll

@@ -14,9 +14,16 @@ namespace MvcFlight.Data
         {
         }
 
-
         public DbSet<Ticket> Tickets { get; set; } = default!;
         public DbSet<Flight> Flights { get; set; } = default!;
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Ticket>()
+                .Property(t => t.Price)
+                .HasColumnType("decimal(18,2)"); 
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
