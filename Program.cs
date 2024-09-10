@@ -6,14 +6,12 @@ using MvcMFlight.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<MvcFlightContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 
-// Add services to the container.
 // Add database context and cache
 if(builder.Environment.IsDevelopment())
+    builder.Services.AddDbContext<MvcFlightContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 {
-    builder.Services.AddControllersWithViews();
 }
 else
 {
@@ -25,6 +23,11 @@ else
     options.InstanceName = "SampleInstance";
     });
 }
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+// Add App Service logging
+builder.Logging.AddAzureWebAppDiagnostics();
 
 var app = builder.Build();
 
