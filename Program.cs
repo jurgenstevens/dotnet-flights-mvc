@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using MvcFlight.Data;
 using MvcFlight.Models;
 using MvcMFlight.Models;
-using DotNetCoreSqlDb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
