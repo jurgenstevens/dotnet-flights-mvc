@@ -1,3 +1,4 @@
+DotNetEnv.Env.Load();
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
@@ -11,21 +12,44 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // Add database context and cache
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MvcFlightContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 }
 else
 {
+    var postgresConnection = Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_CONNECTIONSTRING")
+        ?? builder.Configuration.GetConnectionString("AZURE_POSTGRESQL_CONNECTIONSTRING");
+
     builder.Services.AddDbContext<MvcFlightContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+        options.UseNpgsql(postgresConnection));
+
+    var redisConnection = Environment.GetEnvironmentVariable("AZURE_REDIS_CONNECTIONSTRING")
+        ?? builder.Configuration.GetConnectionString("AZURE_REDIS_CONNECTIONSTRING");
+
     builder.Services.AddStackExchangeRedisCache(options =>
     {
-    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
-    options.InstanceName = "SampleInstance";
+        options.Configuration = redisConnection;
+        options.InstanceName = "MvcFlightApp";
     });
 }
+
+// if(builder.Environment.IsDevelopment())
+// {
+//     builder.Services.AddDbContext<MvcFlightContext>(options =>
+//         options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
+// }
+// else
+// {
+//     builder.Services.AddDbContext<MvcFlightContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+//     builder.Services.AddStackExchangeRedisCache(options =>
+//     {
+//     options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+//     options.InstanceName = "SampleInstance";
+//     });
+// }
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
