@@ -1,4 +1,3 @@
-DotNetEnv.Env.Load();
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
@@ -7,6 +6,7 @@ using MvcFlight.Data;
 using MvcFlight.Models;
 using MvcMFlight.Models;
 
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
