@@ -284,3 +284,7 @@
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Pipelines.Sockets.Unofficial.dll
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/StackExchange.Redis.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/DotNetEnv.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Npgsql.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Sprache.dll
