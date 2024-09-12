@@ -79,7 +79,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.Urls.Add("http://0.0.0.0:8080");
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://*:{port}");
+
 
 app.MapControllerRoute(
     name: "default",
