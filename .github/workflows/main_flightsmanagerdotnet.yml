@@ -27,6 +27,9 @@ jobs:
       - name: dotnet publish
         run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release
 
+      - name: List build output
+        run: ls -R ./bin/Release
+      
       - name: Install dotnet ef
         run: dotnet tool install -g dotnet-ef --version 8.*
 
@@ -37,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./bin/Release/net*/publish
+          path: ./bin/Release/net8.0/publish
 
   deploy:
     runs-on: ubuntu-latest
@@ -67,4 +70,4 @@ jobs:
         with:
           app-name: 'FlightsManagerDOTNet'
           slot-name: 'Production'
-          package: './bin/Release/net*/publish'
+          package: './bin/Release/net8.0/publish'
