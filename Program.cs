@@ -79,6 +79,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.Urls.Add("http://0.0.0.0:8080");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
