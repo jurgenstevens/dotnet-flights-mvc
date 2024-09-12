@@ -25,7 +25,8 @@ jobs:
         run: dotnet build dotnet-flights-mvc.generated.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release
+        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release --output ./bin/Release/net8.0/publish
+
 
       - name: List build output
         run: ls -R ./bin/Release
