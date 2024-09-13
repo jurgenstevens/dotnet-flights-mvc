@@ -1,47 +1,39 @@
 name: Build and deploy ASP.Net Core app to Azure Web App - FlightsManagerDOTNet
-
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
+      # Checkout the code from the repository
       - uses: actions/checkout@v4
-
+      # Set up .NET Core SDK
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '8.0'
 
+      # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore dotnet-flights-mvc.generated.sln
+        run: dotnet restore dotnet-flights-mvc.generated.sln 
 
+      # Build the project
       - name: Build with dotnet
-        run: dotnet build dotnet-flights-mvc.generated.sln --configuration Release
+        run: dotnet build dotnet-flights-mvc.generated.sln --configuration Release 
 
+      # Publish the project
       - name: dotnet publish
-        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release --output ./bin/Debug/net8.0/publish
+        run: dotnet publish dotnet-flights-mvc.generated.sln --configuration Release --output ${{env.DOTNET_ROOT}}/myapp  
 
-
-      - name: List build output
-        run: ls -R ./bin/Debug
-      
-      - name: Install dotnet ef
-        run: dotnet tool install -g dotnet-ef --version 8.*
-
-      - name: Create migrations bundle
-        run: dotnet ef migrations bundle --runtime linux-x64 -o ${{env.DOTNET_ROOT}}/myapp/migrationsbundle
-
+      # Upload the artifact for the deployment job
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./bin/Debug/net8.0/publish
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,25 +42,10 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write
-
+      id-token: write #This is required for requesting the JWT
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_3E7DCD0A29DF4F588321C0DCF0A92C3F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FB956C7EBC3D42398FB5EC107F4B4733 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FFC1EC64601E4A698CC201F58E7EC0C4 }}
-
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'FlightsManagerDOTNet'
-          slot-name: 'Production'
-          package: './bin/Debug/net8.0/publish'
