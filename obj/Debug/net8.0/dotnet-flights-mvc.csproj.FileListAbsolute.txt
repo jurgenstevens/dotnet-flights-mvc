@@ -288,3 +288,4 @@
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Npgsql.dll
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/Sprache.dll
+/Users/jurgenstevens/Projects/dotnet-flights-mvc/bin/Debug/net8.0/infra/main.parameters.json
