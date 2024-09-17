@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>dotnet_flights_mvc</RootNamespace>
+    <UserSecretsId>e211507e-59c4-42b8-bc6c-f4a44f3530b4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

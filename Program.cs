@@ -15,26 +15,18 @@ var builder = WebApplication.CreateBuilder(args);
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MvcFlightContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("MvcFlightContext") ?? throw new InvalidOperationException("Connection string 'MvcFlightContext' not found.")));
 }
 else
 {
-    var postgresConnection = Environment.GetEnvironmentVariable("AZURE_POSTGRESQL_CONNECTIONSTRING")
-        ?? builder.Configuration.GetConnectionString("AZURE_POSTGRESQL_CONNECTIONSTRING");
-
-    builder.Services.AddDbContext<MvcFlightContext>(options =>
-        options.UseNpgsql(postgresConnection));
-
-    var redisConnection = Environment.GetEnvironmentVariable("AZURE_REDIS_CONNECTIONSTRING")
-        ?? builder.Configuration.GetConnectionString("AZURE_REDIS_CONNECTIONSTRING");
-
+    builder.Services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
     builder.Services.AddStackExchangeRedisCache(options =>
     {
-        options.Configuration = redisConnection;
-        options.InstanceName = "MvcFlightApp";
+    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+    options.InstanceName = "SampleInstance";
     });
 }
-
 // if(builder.Environment.IsDevelopment())
 // {
 //     builder.Services.AddDbContext<MvcFlightContext>(options =>
@@ -74,12 +66,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
-
 
 app.MapControllerRoute(
     name: "default",
