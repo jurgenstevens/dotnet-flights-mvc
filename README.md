@@ -18,8 +18,8 @@ With FlightsManagerDOTNet, you can easily manage flights, assign tickets, and of
 - **Flight & Ticket Seeding**: Populate the database with example flights and tickets for demonstration.
 
 ## 💻 Installation & Setup
-1. Clone the repository: `git clone https://github.com/yourusername/AirportService.NET.git`
-2. Navigate to the project directory: `cd AirportService.NET`
+1. Clone the repository: `git clone https://github.com/yourusername/flights-manager-dotnet.git`
+2. Navigate to the project directory: `cd flights-manager-dotnet`
 3. Install dependencies and set up the database:
     ```bash
     dotnet restore
