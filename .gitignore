@@ -1,1 +1,9 @@
 .azure
+/bin/
+/obj/
+
+/# Ignore specific subdirectories if necessary
+bin/Debug/
+bin/Release/
+obj/Debug/
+obj/Release/
